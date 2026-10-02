@@ -1,4 +1,4 @@
-# 🔐 DecSec: End-to-End DevSecOps CI/CD Pipeline
+# 🔐 DevSecOps: End-to-End DevSecOps CI/CD Pipeline
 
 [![Jenkins](https://img.shields.io/badge/CI-Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)](#-tools--technologies)
 [![ArgoCD](https://img.shields.io/badge/CD-ArgoCD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)](#-tools--technologies)
