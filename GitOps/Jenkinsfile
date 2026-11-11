@@ -19,7 +19,7 @@ pipeline {
         stage('Git: Code Checkout') {
             steps {
                 script{
-                    code_checkout("https://github.com/NotHarshhaa/DevOps-Projects/DevOps-Project-40/Devops-Mega-Project-Jenkins-ArgoCD-EKS","master")
+                    code_checkout("https://github.com/Nafees-khan-29/End-to-End-DevSecOps-CI-CD-Pipeline","master")
                 }
             }
         }
@@ -39,13 +39,13 @@ pipeline {
                 script{
                     dir('kubernetes'){
                         sh """
-                            sed -i -e 's|image: .*|image: thatgeekcontainer/wanderlust-backend-beta:${params.BACKEND_DOCKER_TAG}|g' backend.yaml
+                            sed -i -e 's|image: .*|image: nafeeskhan29/DevSecOps-backend:${params.BACKEND_DOCKER_TAG}|g' backend.yaml
                         """
                     }
                     
                     dir('kubernetes'){
                         sh """
-                            sed -i -e 's|image: .*|image: thatgeekcontainer/wanderlust-frontend-beta:${params.FRONTEND_DOCKER_TAG}|g' frontend.yaml
+                            sed -i -e 's|image: .*|image: nafeeskhan29/DevSecOps-frontend:${params.FRONTEND_DOCKER_TAG}|g' frontend.yaml
                         """
                     }
                     
@@ -68,7 +68,7 @@ pipeline {
                         git commit -m "Updated environment variables"
                         
                         echo "Pushing changes to github: "
-                        git push https://github.com/NotHarshhaa/DevOps-Projects/DevOps-Project-40/Devops-Mega-Project-Jenkins-ArgoCD-EKS master
+                        git pushhttps://github.com/Nafees-khan-29/End-to-End-DevSecOps-CI-CD-Pipeline master
                     '''
                     }
                 }
@@ -79,8 +79,8 @@ pipeline {
         success {
             script {
                 emailext attachLog: true,
-                from: 'prodevopsguytech@gmail.com',
-                subject: "Wanderlust Application has been updated and deployed - '${currentBuild.result}'",
+                from: 'nafeeskhan7627@gmail.com',
+                subject: "DevSecOps Application has been updated and deployed - '${currentBuild.result}'",
                 body: """
                     <html>
                     <body>
@@ -96,15 +96,15 @@ pipeline {
                     </body>
                     </html>
             """,
-            to: 'prodevopsguytech@gmail.com',
+            to: 'nafeeskhan7627@gmail.com',
             mimeType: 'text/html'
             }
         }
       failure {
             script {
                 emailext attachLog: true,
-                from: 'prodevopsguytech@gmail.com',
-                subject: "Wanderlust Application build failed - '${currentBuild.result}'",
+                from: 'nafeeskhan7627@gmail.com',
+                subject: "DevSecOps Application build failed - '${currentBuild.result}'",
                 body: """
                     <html>
                     <body>
@@ -117,7 +117,7 @@ pipeline {
                     </body>
                     </html>
             """,
-            to: 'prodevopsguytech@gmail.com',
+            to: 'nafeeskhan7627@gmail.com',
             mimeType: 'text/html'
             }
         }
